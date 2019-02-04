@@ -27,11 +27,6 @@ global class UpdateContactAddresses implements Database.Batchable<sObject>, Data
         update contacts;
     }    
     global void finish(Database.BatchableContext bc){
-        System.debug(recordsProcessed + ' records processed. Shazam!');
-        AsyncApexJob job = [SELECT Id, Status, NumberOfErrors, 
-            JobItemsProcessed,
-            TotalJobItems, CreatedBy.Email
-            FROM AsyncApexJob
-            WHERE Id = :bc.getJobId()];
+        // code such as sending email to the user that all reocrds have been processed
     }    
 }
